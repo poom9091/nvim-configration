@@ -77,11 +77,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'yuezk/vim-js'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'nvim-lua/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim',
+Plug 'ThePrimeagen/harpoon'
 
 call plug#end()
-nmap <leader> gh :diffget //3<CR>
-nmap <leader> gu :diffget //2<CR>
+nmap <leader> gh :diffget //4<cr>
+nmap <leader> gu :diffget //2<cr>
 nmap <leader> gs :G<CR>
 nmap <Leader>py <Plug>(Prettier)
 
@@ -230,3 +232,19 @@ augroup end
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
